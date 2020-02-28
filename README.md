@@ -10,7 +10,7 @@
 
 - 本文阅读对象：商户(地球村、GoodEX)等社区平台集成技术架构师，研发工程师，测试工程师，系统运维工程师。
 
-- java版demo下载地址：https://github.com/joinly/demo.git
+- java版demo下载地址：https://github.com/joinly/trans-demo.git
 
   
 
