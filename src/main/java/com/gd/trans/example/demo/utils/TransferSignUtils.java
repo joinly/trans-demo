@@ -28,7 +28,7 @@ public class TransferSignUtils {
                 sb.append(k + "=" + v + "&");
             }
         }
-        sb.append("key=" + secrtKey);
+        sb.append("secretKey=" + secrtKey);
         return MD5Util.MD5Encode(sb.toString(), "utf-8").toUpperCase();
     }
 }

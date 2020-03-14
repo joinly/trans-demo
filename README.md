@@ -1,10 +1,10 @@
-### 																		商户转账接口说明文档
+### 																											商户转账接口说明文档
 
 
 
 ###### 一、使用说明
 
-- 商户到GoodPay注册成为商户，并生成secrtKey。
+- 商户到GoodPay注册成为商户，创建商户转账应用，并生成secretKey。
 
 - 用户在商户平台(社区)对币种UIGI、GoodCoin、GoodCandy进行转入转出接口。
 
@@ -70,7 +70,7 @@ username："13560443784"
   2. 拼接API密钥：
 
      ```java
-   stringSignTemp=stringA+"&secrtKey=s77R/2k4dOiWDYOlCp8XHw==" //注：secrtKey为商户平台设置的密钥key
+   stringSignTemp=stringA+"&secretKey=s77R/2k4dOiWDYOlCp8XHw==" //注：secretKey为商户平台设置的密钥key
      sign=MD5(stringSignTemp).toUpperCase()="D6A223DAC09770E2E158EE1417BC2908" //注：MD5签名方式
      ```
   
@@ -103,7 +103,7 @@ username："13560443784"
    | mchUsername | String | 是       | 20       | 商户名                              | 15916264616                      |
    | coinType    | String | 是       | 30       | 币种：UIGI、GoodCoin等              | UIGI                             |
    | transAmount | String | 是       | 30       | 转入金额                            | 8888.88                          |
-   | wallet      | String | 否       | 30       | 钱包: EARTH、GOODEX                 | EARTH                            |
+   | appId       | String | 否       | 30       | 应用ID                              | 123456                           |
    | body        | String | 否       | 100      | 转入描述                            | 用户把资金由地球村转入           |
    | requestTime | String | 否       | 30       | 请求时间，格式：yyyy-MM-dd HH:mm:ss | 2020-02-27 10:39:01              |
    | orderNo     | String | 是       | 36       | 社区订单号                          | 215479329277739008               |
@@ -120,7 +120,7 @@ username："13560443784"
    	"mchUsername": "15916264616",
    	"coinType": "UIGI",
    	"transAmount": "8888.88",
-   	"wallet": "EARTH",
+   	"appId": "123456",
    	"body": "地球村转入",
    	"orderNo": "202002271039004853",
    	"requestTime": "2020-02-22 17:44:06",

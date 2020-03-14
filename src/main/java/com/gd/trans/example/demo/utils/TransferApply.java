@@ -15,7 +15,7 @@ public class TransferApply {
     /**
      * 商户名
      */
-    private String mchUsername;
+    private String appId;
     /**
      * 币种
      */
@@ -24,10 +24,6 @@ public class TransferApply {
      * 转账金额
      */
     private BigDecimal transAmount;
-    /**
-     * 第三方钱包 EARTH、EX
-     */
-    private String wallet;
     /**
      * 说明
      */

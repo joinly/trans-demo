@@ -15,13 +15,13 @@ import java.util.TreeMap;
 @Slf4j
 public class TransController {
 
-    private static final String intoUrl = "http://localhost:8082/api/mchTransInApply/into";
+    private static final String intoUrl = "http://localhost:8082/open/api/mchTransInApply/into";
 
-    private static final String outUrl = "http://localhost:8082/api/mchTransOutApply/out";
+    private static final String outUrl = "http://localhost:8082/open/api/mchTransOutApply/out";
 
     private static final String notifyUrl = "http://localhost:8083/earth/notify";
 
-    private static final String secrtKey = "s77R/2k4dOiWDYOlCp8XHw==";
+    private static final String secretKey = "ae736d3c01ef70475c709a35a166e781";
 
     /**
      * 提交转入申请
@@ -29,15 +29,14 @@ public class TransController {
     public void submitInto(TransferApply apply) {
         SortedMap<String, Object> sortedMap = new TreeMap<>();
         sortedMap.put("username", apply.getUsername());
-        sortedMap.put("mchUsername", apply.getMchUsername());
+        sortedMap.put("appId", apply.getAppId());
         sortedMap.put("coinType", apply.getCoinType());
         sortedMap.put("transAmount", apply.getTransAmount());
-        sortedMap.put("wallet", apply.getWallet());
         sortedMap.put("body", apply.getBody());
         sortedMap.put("requestTime", apply.getRequestTime());
         sortedMap.put("orderNo", apply.getOrderNo());
         sortedMap.put("notifyUrl", notifyUrl);
-        String sign = TransferSignUtils.createSign(secrtKey, sortedMap);
+        String sign = TransferSignUtils.createSign(secretKey, sortedMap);
         apply.setSign(sign);
 
         Gson gson = new Gson();
@@ -51,7 +50,7 @@ public class TransController {
                 if (code == 200) {
                     log.info("=====转入请求成功=====");
                 } else {
-                    log.info("=====转入请求失败=====");
+                    log.info("=====转入请求失败=====" + map.get("msg").toString());
                 }
             }
         } catch (Exception e) {
@@ -66,15 +65,14 @@ public class TransController {
     public void submitOut(TransferApply apply) {
         SortedMap<String, Object> sortedMap = new TreeMap<>();
         sortedMap.put("username", apply.getUsername());
-        sortedMap.put("mchUsername", apply.getMchUsername());
+        sortedMap.put("appId", apply.getAppId());
         sortedMap.put("coinType", apply.getCoinType());
         sortedMap.put("transAmount", apply.getTransAmount());
-        sortedMap.put("wallet", apply.getWallet());
         sortedMap.put("body", apply.getBody());
         sortedMap.put("requestTime", apply.getRequestTime());
         sortedMap.put("orderNo", apply.getOrderNo());
         sortedMap.put("notifyUrl", notifyUrl);
-        String sign = TransferSignUtils.createSign(secrtKey, sortedMap);
+        String sign = TransferSignUtils.createSign(secretKey, sortedMap);
         apply.setSign(sign);
 
         Gson gson = new Gson();
@@ -99,10 +97,9 @@ public class TransController {
     public static void main(String[] args) {
         TransferApply apply = new TransferApply();
         apply.setUsername("13560443784");
-        apply.setMchUsername("15916264616");
+        apply.setAppId("3730146258");
         apply.setCoinType("UIGI");
         apply.setTransAmount(new BigDecimal(888));
-        apply.setWallet("EARTH");
         apply.setBody("地球村转入");
         //apply.setBody("地球村转出");
         apply.setRequestTime("2020-02-22 17:44:06");
