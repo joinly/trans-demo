@@ -87,9 +87,9 @@ username："13560443784"
 ######  四、资金转入转出接口
 
 1.  接口地址：
-   转入：http://xxxxxx.com/api/mchTransInApply/into
+   转入：http://xxxxxx.com/open/api/mchTransInApply/into
 
-   转出：http://xxxxx.com/api/mchTransOutApply/out
+   转出：http://xxxxxx.com/open/api/mchTransOutApply/out
 
 2.  请求Method：POST
 
