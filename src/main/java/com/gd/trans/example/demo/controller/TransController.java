@@ -15,13 +15,14 @@ import java.util.TreeMap;
 @Slf4j
 public class TransController {
 
-    private static final String intoUrl = "http://localhost:8082/open/api/mchTransInApply/into";
+    private static final String intoUrl = "http://localhost:8082/api/open/api/mchTransInApply/into";
+    //private static final String intoUrl = "http://service.api.ethancz.com/open/api/mchTransInApply/into";
 
-    private static final String outUrl = "http://localhost:8082/open/api/mchTransOutApply/out";
+    private static final String outUrl = "http://localhost:8082/api/open/api/mchTransOutApply/out";
 
     private static final String notifyUrl = "http://localhost:8083/earth/notify";
 
-    private static final String secretKey = "ae736d3c01ef70475c709a35a166e781";
+    private static final String secretKey = "67fccaf5f36febd8c4b4962f8e779066";
 
     /**
      * 提交转入申请
@@ -96,18 +97,19 @@ public class TransController {
 
     public static void main(String[] args) {
         TransferApply apply = new TransferApply();
-        apply.setUsername("13560443784");
-        apply.setAppId("3730146258");
-        apply.setCoinType("UIGI");
-        apply.setTransAmount(new BigDecimal(888));
-        apply.setBody("地球村转入");
-        //apply.setBody("地球村转出");
+        apply.setAppId("4546197386");
+        apply.setCoinType("GoodCandy");
+        apply.setUsername("18688180876");
+        apply.setTransAmount(new BigDecimal(88));
+
         apply.setRequestTime("2020-02-22 17:44:06");
         apply.setOrderNo("202002271039004853");
         apply.setNotifyUrl(notifyUrl);
 
         TransController trans = new TransController();
-        trans.submitInto(apply);
-        //trans.submitOut(apply);
+        //apply.setBody("地球村用户转出, 调用goodwallet的转入接口");
+        //trans.submitInto(apply);
+        apply.setBody("地球村用户转入, 调用goodwallet的转出接口");
+        trans.submitOut(apply);
     }
 }
