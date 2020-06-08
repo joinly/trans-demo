@@ -87,7 +87,7 @@ public class TransController {
                 if (code == 200) {
                     log.error("=====转出请求成功=====");
                 } else {
-                    log.error("=====转出请求失败=====");
+                    log.error("=====转出请求失败=====" + map.get("msg"));
                 }
             }
         } catch (Exception e) {
