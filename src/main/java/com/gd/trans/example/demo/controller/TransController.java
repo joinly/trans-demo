@@ -100,7 +100,7 @@ public class TransController {
         apply.setAppId("4546197386");
         apply.setCoinType("GoodCandy");
         apply.setUsername("18688180876");
-        apply.setTransAmount(new BigDecimal(88));
+        apply.setTransAmount("88");
 
         apply.setRequestTime("2020-02-22 17:44:06");
         apply.setOrderNo("202002271039004853");

@@ -23,7 +23,7 @@ public class TransferApply {
     /**
      * 转账金额
      */
-    private BigDecimal transAmount;
+    private String transAmount;
     /**
      * 说明
      */
