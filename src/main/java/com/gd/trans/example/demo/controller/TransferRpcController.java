@@ -5,11 +5,14 @@ import com.gd.trans.example.demo.config.ThriftClientConnectPoolFactory;
 import com.gd.trans.example.demo.thrift.FreezeModel;
 import com.gd.trans.example.demo.thrift.ResponseResult;
 import com.gd.trans.example.demo.thrift.TransferModel;
+import com.gd.trans.example.demo.utils.RandomNumberUtils;
 import com.gd.trans.example.demo.utils.ResultJson;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.thrift.transport.TTransportException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Date;
 
 /**
  * @author joinly
@@ -32,7 +35,7 @@ public class TransferRpcController {
             //获取一个连接对象
             TTSocket ttSocket = thriftClientPool.getConnect();
             TransferModel model = new TransferModel();
-            model.setBizNo("20201013105321165152");
+            model.setBizNo(RandomNumberUtils.getBizNo());
             model.setCoinType("GoodCoin");
             model.setFromUsername("18688180876");
             model.setToUsername("200402100000021");
@@ -63,7 +66,7 @@ public class TransferRpcController {
             //获取一个连接对象
             TTSocket ttSocket = thriftClientPool.getConnect();
             FreezeModel model = new FreezeModel();
-            model.setBizNo("20201018105624556333");
+            model.setBizNo(RandomNumberUtils.getBizNo());
             model.setUsername("18688180876");
             model.setCoinType("GoodCoin");
             model.setBalance(200000000);
@@ -101,4 +104,5 @@ public class TransferRpcController {
         result.setData("fail");
         return result;
     }
+
 }

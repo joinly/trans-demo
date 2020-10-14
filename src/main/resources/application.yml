@@ -4,4 +4,4 @@ server:
 # thrift rpc调用ip与端口
 thrift:
   host: 172.18.1.147
-  port: 8899
+  port: 8088
