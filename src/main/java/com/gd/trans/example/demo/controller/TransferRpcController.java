@@ -91,7 +91,7 @@ public class TransferRpcController {
         try {
             //获取一个连接对象
             TTSocket ttSocket = thriftClientPool.getConnect();
-            ResponseResult responseResult = ttSocket.getService().unFreeze("20201018105624556333");
+            ResponseResult responseResult = ttSocket.getService().unFreeze("20201014121402882776");
             //使用完后,放到池中
             thriftClientPool.returnConnection(ttSocket);
             log.info("解冻 responseResult: {} ==== {}", responseResult.getCode(), responseResult.getMsg());
