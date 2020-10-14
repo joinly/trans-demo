@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 public class NotifyController {
 
     @PostMapping("/notify")
-    public ResultJson notify(@RequestBody NotifyModel model) {
+    public ResultJson notifyTest(@RequestBody NotifyModel model) {
         ResultJson result = new ResultJson(200, "成功", "success");
         try {
             log.info("====商户拿到数据解析处理逻辑=====");

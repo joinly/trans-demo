@@ -1,0 +1,30 @@
+namespace java com.cloud.gp.transfer.thrift
+
+struct TransferModel {
+    1:required string bizNo,
+    2:required string coinType,
+    3:required string transType,
+    4:required string fromUsername,
+    5:required string toUsername,
+    6:required i64 transAmount,
+    7:optional string remarks
+}
+
+struct FreezeModel {
+    1:required string bizNo,
+    2:required string coinType,
+    3:required string username,
+    4:required i64 balance,
+    5:optional string remarks
+}
+
+struct ResponseResult {
+    1: i32 code,
+    2: string msg
+}
+
+service ITransferRpcService {
+    ResponseResult transfer(1:required TransferModel transferModel),
+    ResponseResult freeze(1:required FreezeModel freezeModel),
+    ResponseResult unFreeze(1:required string bizNo)
+}
