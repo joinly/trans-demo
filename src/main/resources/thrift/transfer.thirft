@@ -1,21 +1,40 @@
 namespace java com.cloud.gp.transfer.thrift
 
 struct TransferModel {
+    //业务号
     1:required string bizNo,
+    //币种
     2:required string coinType,
+    //转账类型：TRANSTO:转入， TRANSOUT:转出
     3:required string transType,
+    //发起人username
     4:required string fromUsername,
+    //对方username
     5:required string toUsername,
-    6:required i64 transAmount,
+    //操作金额 乘1000000 的数
+    6:required string transAmount,
+    //备注
     7:optional string remarks
 }
 
 struct FreezeModel {
+    //业务号
     1:required string bizNo,
+    //币种
     2:required string coinType,
+    //用户username
     3:required string username,
-    4:required i64 balance,
+    //操作金额 乘1000000 的数
+    4:required string balance,
+    //备注
     5:optional string remarks
+}
+
+struct UnFreezeModel {
+    //业务号
+    1:required string bizNo,
+    //操作金额 乘1000000 的数
+    2:required string balance
 }
 
 struct ResponseResult {
@@ -24,7 +43,10 @@ struct ResponseResult {
 }
 
 service ITransferRpcService {
+    //转账接口
     ResponseResult transfer(1:required TransferModel transferModel),
+    //冻结接口
     ResponseResult freeze(1:required FreezeModel freezeModel),
-    ResponseResult unFreeze(1:required string bizNo)
+    //解冻接口
+    ResponseResult unFreeze(1:required UnFreezeModel model),
 }

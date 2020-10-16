@@ -5,14 +5,15 @@ import com.gd.trans.example.demo.config.ThriftClientConnectPoolFactory;
 import com.gd.trans.example.demo.thrift.FreezeModel;
 import com.gd.trans.example.demo.thrift.ResponseResult;
 import com.gd.trans.example.demo.thrift.TransferModel;
+import com.gd.trans.example.demo.thrift.UnFreezeModel;
 import com.gd.trans.example.demo.utils.RandomNumberUtils;
 import com.gd.trans.example.demo.utils.ResultJson;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.thrift.transport.TTransportException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
-
-import java.util.Date;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * @author joinly
@@ -37,9 +38,9 @@ public class TransferRpcController {
             TransferModel model = new TransferModel();
             model.setBizNo(RandomNumberUtils.getBizNo());
             model.setCoinType("GoodCoin");
-            model.setFromUsername("18688180876");
-            model.setToUsername("200402100000021");
-            model.setTransAmount(50000000);
+            model.setFromUsername("200515100118");
+            model.setToUsername("200515100122");
+            model.setTransAmount("50000000");
             model.setTransType("TRANSOUT");
             model.setRemarks("rpc转账测试");
             ResponseResult responseResult = ttSocket.getService().transfer(model);
@@ -67,14 +68,15 @@ public class TransferRpcController {
             TTSocket ttSocket = thriftClientPool.getConnect();
             FreezeModel model = new FreezeModel();
             model.setBizNo(RandomNumberUtils.getBizNo());
-            model.setUsername("18688180876");
+            model.setUsername("200515100118");
             model.setCoinType("GoodCoin");
-            model.setBalance(200000000);
+            model.setBalance("200000000");
             model.setRemarks("测试冻结");
             ResponseResult responseResult = ttSocket.getService().freeze(model);
             //使用完后,放到池中
             thriftClientPool.returnConnection(ttSocket);
             log.info("冻结 responseResult: {} ==== {}", responseResult.getCode(), responseResult.getMsg());
+            result.setMsg(responseResult.getMsg());
             return result;
         } catch (Exception e) {
             log.error("冻结异常", e);
@@ -91,10 +93,14 @@ public class TransferRpcController {
         try {
             //获取一个连接对象
             TTSocket ttSocket = thriftClientPool.getConnect();
-            ResponseResult responseResult = ttSocket.getService().unFreeze("20201014121402882776");
+            UnFreezeModel model = new UnFreezeModel();
+            model.setBizNo("20201016121530641696");
+            model.setBalance("200000000");
+            ResponseResult responseResult = ttSocket.getService().unFreeze(model);
             //使用完后,放到池中
             thriftClientPool.returnConnection(ttSocket);
             log.info("解冻 responseResult: {} ==== {}", responseResult.getCode(), responseResult.getMsg());
+            result.setMsg(responseResult.getMsg());
             return result;
         } catch (Exception e) {
             log.error("解冻异常", e);
