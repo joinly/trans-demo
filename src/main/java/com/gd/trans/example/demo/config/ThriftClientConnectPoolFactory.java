@@ -2,7 +2,12 @@ package com.gd.trans.example.demo.config;
 
 import org.apache.commons.pool.BasePoolableObjectFactory;
 import org.apache.commons.pool.impl.GenericObjectPool;
-
+/**
+ * @author joinly
+ * @company: goodinvest
+ * @date 2020-10-13 09:24
+ * @desc: TODO
+ */
 public class ThriftClientConnectPoolFactory {
 
     /**

@@ -10,6 +10,12 @@ import org.apache.thrift.transport.TTransportException;
 
 import java.net.Socket;
 
+/**
+ * @author joinly
+ * @company: goodinvest
+ * @date 2020-10-13 08:59
+ * @desc: TODO
+ */
 public class TTSocket {
     /**thrift socket对象*/
     private TSocket tSocket;

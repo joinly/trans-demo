@@ -5,6 +5,12 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+/**
+ * @author joinly
+ * @company: goodinvest
+ * @date 2020-10-13 09:30
+ * @desc: TODO
+ */
 @Configuration
 public class ThriftClientConfig {
     @Value("${thrift.host}")
